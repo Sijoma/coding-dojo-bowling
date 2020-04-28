@@ -1,4 +1,8 @@
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,6 +12,13 @@ class GameTests {
     @Test
     void gameStart() {
         assertFalse(game.isOver());
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
+    void singleRolls(int roll) throws Exception {
+        game.addRoll(roll);
+        assertEquals(roll, game.getTotalScore());
     }
 
     @Test
@@ -416,6 +427,32 @@ class GameTests {
         assertEquals(133, game.getTotalScore());
         assertEquals(game.summariseScore(), game.getTotalScore());
         assertTrue(game.isOver());
+    }
+
+    @Test
+    void strikeCalculation() throws Exception{
+        rollStrike();
+        game.addRoll(5);
+        assertEquals(20, game.summariseScore());
+        assertEquals(20, game.getTotalScore());
+    }
+
+    @Test
+    void spareCalculation() throws Exception{
+        rollSpare();
+        game.addRoll(2);
+        game.addRoll(5);
+        assertEquals(19, game.summariseScore());
+    }
+
+
+    private void rollStrike() throws Exception {
+        game.addRoll(10);
+    }
+
+    private void rollSpare() throws Exception {
+        game.addRoll(6);
+        game.addRoll(4);
     }
 
 
