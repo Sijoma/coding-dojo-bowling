@@ -331,7 +331,7 @@ class GameTests {
             game.addRoll(6);
             game.addRoll(8);
         } catch (Exception e) {
-            assertEquals("bowling_game.Game is already over!", e.getMessage());
+            assertEquals("Game is already over!", e.getMessage());
         }
     }
 
@@ -397,7 +397,7 @@ class GameTests {
             game.addRoll(7);
             game.addRoll(6);
         } catch (Exception e) {
-            assertEquals("bowling_game.Game is already over!", e.getMessage());
+            assertEquals("Game is already over!", e.getMessage());
         }
     }
 
