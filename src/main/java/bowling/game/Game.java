@@ -1,6 +1,6 @@
-package BowlingGame;
+package bowling.game;
 
-import BowlingGame.Exceptions.TooManyRollsException;
+import bowling.game.exceptions.TooManyRollsException;
 import java.util.Arrays;
 import java.util.LinkedList;
 

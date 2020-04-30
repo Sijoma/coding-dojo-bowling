@@ -1,8 +1,8 @@
-package BowlingGame.Exceptions;
+package bowling.game.exceptions;
 
 public class TooManyRollsException extends RuntimeException {
     public TooManyRollsException(){
-        super("BowlingGame.Game is already over!");
+        super("bowling_game.Game is already over!");
     }
 
 }

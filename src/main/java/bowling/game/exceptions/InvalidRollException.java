@@ -1,4 +1,4 @@
-package BowlingGame.Exceptions;
+package bowling.game.exceptions;
 
 public class InvalidRollException extends Exception {
 

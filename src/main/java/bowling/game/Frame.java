@@ -1,6 +1,6 @@
-package BowlingGame;
+package bowling.game;
 
-import BowlingGame.Exceptions.InvalidRollException;
+import bowling.game.exceptions.InvalidRollException;
 
 public class Frame {
     private final int[] pinsRolled;

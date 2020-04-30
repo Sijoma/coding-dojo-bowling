@@ -1,4 +1,5 @@
-import BowlingGame.Game;
+package bowling.game;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -330,7 +331,7 @@ class GameTests {
             game.addRoll(6);
             game.addRoll(8);
         } catch (Exception e) {
-            assertEquals("BowlingGame.Game is already over!", e.getMessage());
+            assertEquals("bowling_game.Game is already over!", e.getMessage());
         }
     }
 
@@ -396,7 +397,7 @@ class GameTests {
             game.addRoll(7);
             game.addRoll(6);
         } catch (Exception e) {
-            assertEquals("BowlingGame.Game is already over!", e.getMessage());
+            assertEquals("bowling_game.Game is already over!", e.getMessage());
         }
     }
 
