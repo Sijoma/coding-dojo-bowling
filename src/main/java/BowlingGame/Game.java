@@ -1,3 +1,6 @@
+package BowlingGame;
+
+import BowlingGame.Exceptions.TooManyRollsException;
 import java.util.Arrays;
 import java.util.LinkedList;
 
@@ -19,17 +22,20 @@ public class Game {
     };
 
 
-    public void addRoll(int rolledPins) throws Exception{
+    public void addRoll(int rolledPins) throws TooManyRollsException {
         Frame currentFrame = this.frames.getLast();
         if(currentFrame.isFinished()){
             currentFrame = this.incrementFrame();
         }
-
-        if(frames.size() < 2) {
-            currentFrame.addRoll(rolledPins, null);
-        } else {
-            Frame previousFrame = frames.get(frames.size() - 2);
-            currentFrame.addRoll(rolledPins, previousFrame);
+        try {
+            if (frames.size() < 2) {
+                currentFrame.addRoll(rolledPins, null);
+            } else {
+                Frame previousFrame = frames.get(frames.size() - 2);
+                currentFrame.addRoll(rolledPins, previousFrame);
+            }
+        } catch (Exception e){
+            System.out.println("error" + e);
         }
 
         tooManyRollsCheck();
@@ -37,13 +43,17 @@ public class Game {
 
     }
 
+    public boolean isOver(){
+        return gameOver;
+    }
+
     private void gameOverCheck(){
         this.gameOver = this.frames.size() == maxFrames;
     }
 
-    private void tooManyRollsCheck() throws Exception{
+    private void tooManyRollsCheck() throws TooManyRollsException{
         if(this.frames.size() > maxFrames){
-            throw new Exception("Game is already over!");
+            throw new TooManyRollsException();
         }
     }
 
@@ -58,8 +68,6 @@ public class Game {
         return frame;
     }
 
-    public boolean isOver(){
-        return gameOver;
-    }
+
 
 }

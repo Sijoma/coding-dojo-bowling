@@ -1,3 +1,7 @@
+package BowlingGame;
+
+import BowlingGame.Exceptions.InvalidRollException;
+
 public class Frame {
     private final int[] pinsRolled;
     private int rollCount = 0;
@@ -18,7 +22,7 @@ public class Frame {
         return  (allPinsCleared() && !this.lastFrame) || outOfRolls();
     }
 
-    public void addRoll(int rolledPins, Frame previousFrame) throws Exception{
+    public void addRoll(int rolledPins, Frame previousFrame) throws InvalidRollException{
         invalidRollCheck(rolledPins);
 
         if(previousFrame != null){
@@ -58,9 +62,9 @@ public class Frame {
         }
     }
 
-    private void invalidRollCheck(int rolledPins) throws Exception{
+    private void invalidRollCheck(int rolledPins) throws InvalidRollException{
         if(rolledPins > this.maxPins || (this.rollCount == 1 && pinsRolled[0] + rolledPins > maxPins)){
-            throw new Exception("That many pins are not in the game! Lousy Cheater!");
+            throw new InvalidRollException();
         }
     }
 

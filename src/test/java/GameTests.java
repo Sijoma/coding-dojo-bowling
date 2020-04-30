@@ -1,8 +1,7 @@
+import BowlingGame.Game;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,26 +15,26 @@ class GameTests {
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
-    void singleRolls(int roll) throws Exception {
+    void singleRolls(int roll) {
         game.addRoll(roll);
         assertEquals(roll, game.getTotalScore());
     }
 
     @Test
-    void firstRoll() throws Exception {
+    void firstRoll() {
         game.addRoll(1);
         assertEquals(1, game.getTotalScore());
     }
 
     @Test
-    void secondRoll() throws Exception {
+    void secondRoll() {
         game.addRoll(1);
         game.addRoll(4);
         assertEquals(5, game.getTotalScore());
     }
 
     @Test
-    void thirdRoll() throws Exception {
+    void thirdRoll() {
         game.addRoll(1);
         game.addRoll(4);
         game.addRoll(4);
@@ -43,7 +42,7 @@ class GameTests {
     }
 
     @Test
-    void fourthRoll() throws Exception {
+    void fourthRoll() {
         game.addRoll(1);
         game.addRoll(4);
         game.addRoll(4);
@@ -52,7 +51,7 @@ class GameTests {
     }
 
     @Test
-    void fifthRoll() throws Exception {
+    void fifthRoll() {
         game.addRoll(1);
         game.addRoll(4);
         game.addRoll(4);
@@ -62,7 +61,7 @@ class GameTests {
     }
 
     @Test
-    void sixthRoll() throws Exception {
+    void sixthRoll() {
         game.addRoll(1);
         game.addRoll(4);
         game.addRoll(4);
@@ -73,7 +72,7 @@ class GameTests {
     }
 
     @Test
-    void seventhRoll() throws Exception {
+    void seventhRoll() {
         game.addRoll(1);
         game.addRoll(4);
         game.addRoll(4);
@@ -85,7 +84,7 @@ class GameTests {
     }
 
     @Test
-    void eighthRoll() throws Exception {
+    void eighthRoll() {
         game.addRoll(1);
         game.addRoll(4);
         game.addRoll(4);
@@ -98,7 +97,7 @@ class GameTests {
     }
 
     @Test
-    void ninthRoll() throws Exception {
+    void ninthRoll() {
         game.addRoll(1);
         game.addRoll(4);
         game.addRoll(4);
@@ -112,7 +111,7 @@ class GameTests {
     }
 
     @Test
-    void tenthRoll() throws Exception {
+    void tenthRoll() {
         game.addRoll(1);
         game.addRoll(4);
         game.addRoll(4);
@@ -127,7 +126,7 @@ class GameTests {
     }
 
     @Test
-    void eleventhRoll() throws Exception {
+    void eleventhRoll() {
         game.addRoll(1);
         game.addRoll(4);
         game.addRoll(4);
@@ -141,9 +140,9 @@ class GameTests {
         game.addRoll(1);
         assertEquals(61, game.getTotalScore());
     }
-    
+
     @Test
-    void twelfthRoll() throws Exception {
+    void twelfthRoll() {
         game.addRoll(1);
         game.addRoll(4);
         game.addRoll(4);
@@ -160,7 +159,7 @@ class GameTests {
     }
 
     @Test
-    void thirteenthRoll() throws Exception {
+    void thirteenthRoll() {
         game.addRoll(1);
         game.addRoll(4);
         game.addRoll(4);
@@ -178,7 +177,7 @@ class GameTests {
     }
 
     @Test
-    void fourteenthRoll() throws Exception {
+    void fourteenthRoll() {
         game.addRoll(1);
         game.addRoll(4);
         game.addRoll(4);
@@ -197,7 +196,7 @@ class GameTests {
     }
 
     @Test
-    void fifteenthRoll() throws Exception {
+    void fifteenthRoll() {
         game.addRoll(1);
         game.addRoll(4);
         game.addRoll(4);
@@ -217,7 +216,7 @@ class GameTests {
     }
 
     @Test
-    void sixteenthRoll() throws Exception {
+    void sixteenthRoll() {
         game.addRoll(1);
         game.addRoll(4);
         game.addRoll(4);
@@ -236,8 +235,9 @@ class GameTests {
         game.addRoll(10);
         assertEquals(107, game.getTotalScore());
     }
+
     @Test
-    void seventeenthRoll() throws Exception {
+    void seventeenthRoll() {
         game.addRoll(1);
         game.addRoll(4);
         game.addRoll(4);
@@ -259,7 +259,7 @@ class GameTests {
     }
 
     @Test
-    void eighteenthRoll() throws Exception {
+    void eighteenthRoll() {
         game.addRoll(1);
         game.addRoll(4);
         game.addRoll(4);
@@ -282,7 +282,7 @@ class GameTests {
     }
 
     @Test
-    void nineteenthRoll() throws Exception {
+    void nineteenthRoll() {
         game.addRoll(1);
         game.addRoll(4);
         game.addRoll(4);
@@ -307,8 +307,8 @@ class GameTests {
     }
 
     @Test
-    void tooManyRolls() throws Exception {
-        try{
+    void tooManyRolls() {
+        try {
             game.addRoll(1);
             game.addRoll(4);
             game.addRoll(4);
@@ -329,25 +329,23 @@ class GameTests {
             game.addRoll(8);
             game.addRoll(6);
             game.addRoll(8);
-        }
-        catch (Exception e){
-            assertEquals("Game is already over!", e.getMessage());
+        } catch (Exception e) {
+            assertEquals("BowlingGame.Game is already over!", e.getMessage());
         }
     }
 
     @Test
     void tooManyPins() {
-        try{
+        try {
             game.addRoll(1);
             game.addRoll(10);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             assertEquals("That many pins are not in the game! Lousy Cheater!", e.getMessage());
         }
     }
 
     @Test
-    void tooManyPinsAtLastFrame() throws Exception {
+    void tooManyPinsAtLastFrame() {
         try {
             game.addRoll(1);
             game.addRoll(4);
@@ -368,7 +366,7 @@ class GameTests {
             game.addRoll(2);
             game.addRoll(8);
             game.addRoll(11);
-        } catch(Exception e){
+        } catch (Exception e) {
             assertEquals("That many pins are not in the game! Lousy Cheater!", e.getMessage());
         }
 
@@ -376,7 +374,7 @@ class GameTests {
 
 
     @Test
-    void nineteenthRollWithoutExtraRoll() throws Exception {
+    void nineteenthRollWithoutExtraRoll() {
         try {
             game.addRoll(1);
             game.addRoll(4);
@@ -397,14 +395,14 @@ class GameTests {
             game.addRoll(2);
             game.addRoll(7);
             game.addRoll(6);
-        } catch (Exception e){
-            assertEquals("Game is already over!", e.getMessage());
+        } catch (Exception e) {
+            assertEquals("BowlingGame.Game is already over!", e.getMessage());
         }
     }
 
     // This test differentiates between calculating the score on the fly (with each frame) or after the game has finished
     @Test
-    void testOtherScoreMethod() throws Exception {
+    void testOtherScoreMethod() {
         game.addRoll(1);
         game.addRoll(4);
         game.addRoll(4);
@@ -430,7 +428,7 @@ class GameTests {
     }
 
     @Test
-    void strikeCalculation() throws Exception{
+    void strikeCalculation() {
         rollStrike();
         game.addRoll(5);
         assertEquals(20, game.summariseScore());
@@ -438,7 +436,7 @@ class GameTests {
     }
 
     @Test
-    void spareCalculation() throws Exception{
+    void spareCalculation() {
         rollSpare();
         game.addRoll(2);
         game.addRoll(5);
@@ -446,20 +444,14 @@ class GameTests {
     }
 
 
-    private void rollStrike() throws Exception {
+    private void rollStrike() {
         game.addRoll(10);
     }
 
-    private void rollSpare() throws Exception {
+    private void rollSpare() {
         game.addRoll(6);
         game.addRoll(4);
     }
-
-
-
-
-
-
 
 
 }
